@@ -1,14 +1,22 @@
 class Solution {
 public:
 
-        void dfs(int node,vector<int> adj[], vector<int> &vist ){
-            vist[node]=1;
-            for(auto it: adj[node]){
-                if(!vist[it]){
-                    dfs(it,adj,vist);
-                }
+         void dfs(int node, vector<int> adj[],vector<int> &vis){
+        vis[node]=1; // first node is visited by defalut
+        // let node =0 and its neighbours are 1 and 2 then it:adj[node]
+        // means 'it' is traversing 1 and 2 inside adj[0]
+
+        for(auto it:adj[node]){
+            if(!vis[it]){
+                mins++;
+                // it wala node visited nhi hai then hum uski depth me jayenge
+                dfs(it,adj,vis);
             }
+
         }
+
+    }
+
     int findCircleNum(vector<vector<int>>& isConnected) {
         int prov=0;
         // here we are given adj matrix but we are used to do it in adj list so we make our own adj list out of the matrix 
