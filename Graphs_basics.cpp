@@ -51,3 +51,92 @@ public:
         return prov;
     }
 };
+
+// rotten tomatoes (bfs exclusive)
+
+class Solution {
+public:  
+
+
+
+   
+    int orangesRotting(vector<vector<int>>& grid) {
+       
+             
+             // why dfs will not work here because the rotting is taking place at the simultaneously at the same level (yani at the dist of one) so we need to visit them level wise not depth wise 
+        int n=grid.size();
+        int m=grid[0].size();
+
+        // { {row,col}, time } data str for bfs
+       queue<pair<pair<int,int>,int>> q;
+             // visited array
+          int vis[n][m];
+
+        //get all the rotten oranges 
+        for(int i=0;i<n;i++){
+
+            for(int j=0;j<m;j++){
+
+                if(grid[i][j]==2){
+                    q.push({{i,j},0}); // these all are rotten from before hence t=0
+                   vis[i][j]=2;
+                }
+                else{
+                    vis[i][j]=0;
+                }
+
+            }
+        }
+        int time=0;
+        // defiing the movement above below left right for the rotting of oranges
+        int moverow[]={1,0,-1,0};
+        int movecol[]={0,1,0,-1};
+
+
+        // now writing the bfs algo (not writing it in a fn cuz we need to traverse only once here)
+
+
+
+             // main bfs logic
+        while(!q.empty()){
+            int row=q.front().first.first; //{{r, }  }
+            int col=q.front().first.second;// {{ ,c} }
+            int t=q.front().second;// { {,} t }
+            q.pop(); // basic structure for this question to traverse the queue 
+            time=max(t,time);
+
+            // now to traverse the neighbours for rotting them with the help of movearray
+            for(int i=0;i<4;i++){ // always 4 neghbours for any node
+                  int neighrow=row+moverow[i];
+                  int neighcol=col+movecol[i];
+                  // check if these neighbours are valid (not going outside the box) or if it empty box or if it is already rottened
+                  if(neighrow>=0&&neighcol>=0&&neighrow<n&&neighcol<m&&vis[neighrow][neighcol]!=2&&grid[neighrow][neighcol]==1){
+                    q.push({{neighrow,neighcol},t+1}); // if they satisfy all the above condition only then we can rot them i.e add them in the queue and incraese the time by one
+                    vis[neighrow][neighcol]=2;
+
+                  }
+            }
+
+
+        }
+
+       
+// after everything is done we do a final check if there remains a fresh orange that was not been rottened in the grid that means our ans is impossible 
+
+for(int i=0;i<n;i++){
+    for(int j=0;j<m;j++){
+        if(grid[i][j]==1&&vis[i][j]!=2){
+            return -1;
+        }
+    }
+}
+      
+
+        
+return time;
+
+
+        
+    }
+};
+
