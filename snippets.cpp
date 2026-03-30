@@ -55,6 +55,8 @@ __builtin_popcount(x);
 // max min
 int mn = *min_element(v.begin(), v.end());
 int mx = *max_element(v.begin(), v.end());
+// index of max/min element
+int idx = it - v.begin();
 
 
 // imp syntaxs for imple
@@ -64,6 +66,19 @@ pair<int,int> p = {a,b};
 // input in vector fast
 vector<int> v(n);
 for(auto &x : v) cin >> x;
+
+// count occurances 
+count(v.begin(), v.end(), x);
+
+// find element
+auto it = find(v.begin(), v.end(), x);
+
+// remove duplicates fast 
+sort(v.begin(), v.end());
+v.erase(unique(v.begin(), v.end()), v.end());
+
+// rotate by 'k' potision
+rotate(v.begin(), v.begin()+k, v.end());
 
 
 
