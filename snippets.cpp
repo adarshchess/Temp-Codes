@@ -7,7 +7,7 @@ for(int x : v) ans ^= x;
 
 
 // to calculate 2 ki power very fast 
-long long ans=1LL << (n-1);
+long long ans=1LL << (n);
 
 
 
