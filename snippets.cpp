@@ -1,3 +1,12 @@
+
+
+
+
+// to calculate 2 ki power very fast 
+long long ans=1LL << (n-1);
+
+
+
 // power calc but fast
 int binpow(int a, int b) {
     int res = 1;
