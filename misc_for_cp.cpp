@@ -1,6 +1,11 @@
 // subarray in cp problems
 
 
+//how to find if a numer is power of 2 using bit tracker 
+
+n > 0 && (n & (n - 1)) == 0
+    //iska logic ye hai koi bhi two ki power wala no hai uska bit form me sirf ek hi 1 hota hai we just need to check that
+
 // prefix sum ppn
 vector<int> pref(n);
 pref[0] = a[0];
