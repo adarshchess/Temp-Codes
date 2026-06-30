@@ -1,5 +1,11 @@
 // number theory codes 
 
+// division with rounding off
+ round(a/b)= (a+b/2)/b;
+
+// if we want to use ceil divison in int without ceil fn 
+
+ceil(a/b)= (a+b-1)/b;
 
 // for gcd avoiding overflow
 int gcd(int a,int b)
