@@ -10,3 +10,7 @@ final_index = ((start + jump) % n + n) % n;
 int modNorm(long long x, int m) {
     return ((x % m) + m) % m;
 }
+
+// if we want to use ceil divison in int without ceil fn 
+
+ceil(a/b)= (a+b-1)/b;
