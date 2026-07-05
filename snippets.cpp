@@ -24,7 +24,7 @@ long long ans=1LL << (n);
 
 
 // power calc but fast
-int binpow(int a, int b) {
+int power(int a, int b) {
     int res = 1;
     while(b) {
         if(b & 1) res *= a;
